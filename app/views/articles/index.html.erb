@@ -1,0 +1,21 @@
+<h1>Here are my articles</h1>
+
+<% @articles.each do |article| %>
+<ul>
+  <li> <%if article.completed == true %>
+    <p><i class="fas fa-check-square"></i> <%=link_to article.title, article_path(article.id)%>
+    <% else %>
+    <p><i class="fas fa-stop"></i> <%= link_to article.title, article_path(article.id)%>
+    <% end %>
+     <%= link_to article_path(article.id),
+    method: :delete,
+    data: { confirm: "Are you sure?" } do %>
+    <i class="fas fa-trash-alt"></i>
+    <% end %>
+  </li>
+</ul>
+<% end %>
+
+<p>   <i class="fas fa-plus"></i>  <%= link_to  'Add a new article', new_article_path %></p>
+
+
